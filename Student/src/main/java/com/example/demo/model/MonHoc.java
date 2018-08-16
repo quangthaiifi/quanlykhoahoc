@@ -24,6 +24,8 @@ public class MonHoc {
 	@Column(name="sotrinh")
 	private int soTrinh;
 	
+	@ManyToMany(mappedBy="monHocs")
+	private Set<SinhVien> sinhViens;
 	public MonHoc() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -33,7 +35,7 @@ public class MonHoc {
 		this.id = id;
 		this.tenMH = tenMH;
 		this.soTrinh = soTrinh;
-		
+		this.sinhViens = sinhViens;
 	}
 	
 	
@@ -57,7 +59,7 @@ public class MonHoc {
 	}
 	@Override
 	public String toString() {
-		return "MonHoc [id=" + id + ", tenMH=" + tenMH + ", soTrinh=" + soTrinh +  "]";
+		return "MonHoc [id=" + id + ", tenMH=" + tenMH + ", soTrinh=" + soTrinh + ", sinhViens=" + sinhViens + "]";
 	}
 
 	
