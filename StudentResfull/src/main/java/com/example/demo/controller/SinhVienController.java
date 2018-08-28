@@ -3,19 +3,25 @@ package com.example.demo.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.model.SinhVien;
 import com.example.demo.sevice.SinhVienSevice;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @Controller
+@RequestMapping(value="/api/")
 public class SinhVienController {
 	@Autowired
 	SinhVienSevice sinhVienSevice;
@@ -50,10 +56,12 @@ public class SinhVienController {
 		return sinhVienSevice.findById(id);
 	}
 	@DeleteMapping(value="/sinhvien/{id}")
-	public void deleteSinhVien(@PathVariable Long id)
-	{
-		System.out.println("day la delete");
+	public ResponseEntity<String> deleteMonHoc(@PathVariable long id) {
+		System.out.println("Delete All Customers...");
 		sinhVienSevice.deleteSinhVien(id);
+			
+ 
+		return new ResponseEntity<>("All customers have been deleted!", HttpStatus.OK);
 	}
 	
 }
