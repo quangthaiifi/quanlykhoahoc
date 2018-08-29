@@ -36,7 +36,7 @@ public class SinhVienController {
 	public List<SinhVien> getAll(){
 		return sinhVienSevice.getAll();
 	}
-	@PostMapping(value="/sinhvien")
+	@PostMapping(value="/sinhvien/create")
 	public void createSinhVien(@RequestBody SinhVien sinhVien) {
 		System.out.println("Day la them sinh vien");
 		System.out.println(sinhVien);
