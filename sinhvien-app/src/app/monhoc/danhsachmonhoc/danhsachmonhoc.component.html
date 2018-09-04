@@ -1,0 +1,22 @@
+<h3 style="text-align: center;width: 100%">Danh sách môn học</h3>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Môn học</th>
+      <th scope="col">Số Trình</th>
+      <th sorted="col">tác Vụ</th>
+    </tr>
+  </thead>
+    <tr  *ngFor="let monHoc of monHocs | async">
+       
+        <th scope="row">{{numRow}}</th>
+        <th scope="row">{{monHoc.tenMH}}</th>
+        <th scope="row">{{monHoc.soTrinh}}</th>
+        <span class="btn btn-danger" (click)= "deleteMonHoc(monHoc.id)"> Xóa </span>
+        <span class="btn btn-info" (click)= "editMonHoc(monHoc.id)"> Sửa </span>
+      </tr>
+    </tbody> 
+  
+</table>
+<span class="btn  btn-primary" (click)= "formcreate()"> thêm môn hoc </span>

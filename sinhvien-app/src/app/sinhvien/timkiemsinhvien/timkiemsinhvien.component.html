@@ -1,0 +1,18 @@
+<h3>Tìm kiếm sinh viên theo id</h3>
+<div style="width: 300px;">
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="lastname">id Sinh Vien</label>
+      <input type="text" class="form-control" id="id" required [(ngModel)]="id" name="id">
+    </div>
+ 
+    <div class="btn-group">
+      <button type="submit" class="btn btn-success">Submit</button>
+    </div>
+  </form>
+</div>
+<ul>
+  <li>
+    <h4 *ngIf="sinhVien">{{sinhVien.id}} - {{sinhVien.tenSV}} {{sinhVien.lop}}</h4>
+  </li>
+</ul>

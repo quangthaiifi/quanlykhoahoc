@@ -1,0 +1,31 @@
+<h3 style="text-align: center;width: 100%">Danh sách sinh viên</h3>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Tên sinh viên</th>
+      <th scope="col">Ngày sinh</th>
+      <th scope="col">Giới tính</th>
+      <th scope="col">Quê quán</th>
+      <th scope="col">Lớp</th>
+      <th scope="col">Tác vụ</th>
+      
+    </tr>
+  </thead>
+    <tr  *ngFor="let sinhVien of sinhViens | async">
+       
+        <th scope="row">{{numRow}}</th>
+        <th scope="row">{{sinhVien.tenSV}}</th>
+        <th scope="row">{{sinhVien.ngaySinh}}</th>
+        <th scope="row">{{sinhVien.gioiTinh}}</th>
+        <th scope="row">{{sinhVien.queQuan}}</th>
+        <th scope="row">{{sinhVien.lop}}</th>
+
+        <span class="btn btn-danger" (click)= "deleteSinhVien(sinhVien.id)"> Xóa </span>
+        <span class="btn btn-info" (click)= "editSinhVien(sinhVien.id)"> Sửa </span>
+        <span class="btn btn-info"  (click)="dangkymonhoc(sinhVien.id)">Đăng ký môn hoc</span>  
+      </tr>
+    </tbody> 
+  
+</table>
+<span class="btn  btn-primary" (click)= "formcreate()"> thêm sinh viên </span>
