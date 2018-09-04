@@ -2,6 +2,7 @@ package com.example.demo.sevice;
 
 import java.util.List;
 
+import com.example.demo.model.MonHoc;
 import com.example.demo.model.SinhVien;
 
 public interface SinhVienSevice {
@@ -14,5 +15,8 @@ public interface SinhVienSevice {
 	
 	void saveSinhVien(SinhVien sinhVien);
 	
+	void dangKyMonHoc(long idSV,MonHoc monHoc);
+	
+	void deleteMonHocDangKy(long idsv , MonHoc monHoc);
 
 }

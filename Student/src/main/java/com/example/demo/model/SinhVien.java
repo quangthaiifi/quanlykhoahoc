@@ -11,6 +11,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name="sinhvien")
 public class SinhVien {
@@ -24,7 +26,7 @@ public class SinhVien {
 	private String tenSV;
 	
 	@Column(name="gioitinh")
-	private int gioiTinh;
+	private String gioiTinh;
 	
 	@Column(name="quequan")
 	private String queQuan;
@@ -46,7 +48,7 @@ public class SinhVien {
 		// TODO Auto-generated constructor stub
 	}
 
-	public SinhVien(Long id, String tenSV, int gioiTinh, String queQuan, String ngaySinh, String lop,
+	public SinhVien(Long id, String tenSV, String gioiTinh, String queQuan, String ngaySinh, String lop,
 			Set<MonHoc> monHocs) {
 		super();
 		this.id = id;
@@ -74,11 +76,11 @@ public class SinhVien {
 		this.tenSV = tenSV;
 	}
 
-	public int getGioiTinh() {
-		return gioiTinh;
+	public String getGioiTinh() {
+		return this.gioiTinh;
 	}
 
-	public void setGioiTinh(int gioiTinh) {
+	public void setGioiTinh(String gioiTinh) {
 		this.gioiTinh = gioiTinh;
 	}
 
@@ -119,4 +121,6 @@ public class SinhVien {
 		return "SinhVien [id=" + id + ", tenSV=" + tenSV + ", gioiTinh=" + gioiTinh + ", queQuan=" + queQuan
 				+ ", ngaySinh=" + ngaySinh + ", lop=" + lop + ", monHocs=" + monHocs + "]";
 	}
+
+	
 }

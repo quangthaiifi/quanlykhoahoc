@@ -15,12 +15,14 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.model.MonHoc;
 import com.example.demo.model.SinhVien;
 import com.example.demo.sevice.SinhVienSevice;
 
 @CrossOrigin(origins = "http://localhost:4200")
-@Controller
+@RestController
 @RequestMapping(value="/api/")
 public class SinhVienController {
 	@Autowired
@@ -51,17 +53,29 @@ public class SinhVienController {
 	}
 	@ResponseBody
 	@GetMapping(value="/sinhvien/{id}")
-	public SinhVien findSinhvienById(@PathVariable long id)
-	{
+	public SinhVien findById(@PathVariable long id) {
 		return sinhVienSevice.findById(id);
 	}
-	@DeleteMapping(value="/sinhvien/{id}")
+	@DeleteMapping(value="/sinhvien/delete/{id}")
 	public ResponseEntity<String> deleteMonHoc(@PathVariable long id) {
 		System.out.println("Delete All Customers...");
 		sinhVienSevice.deleteSinhVien(id);
-			
- 
 		return new ResponseEntity<>("All customers have been deleted!", HttpStatus.OK);
 	}
+	@PutMapping(value="sinhvien/dangky/{id}")
+	public ResponseEntity<String> dangKyMonHoc(@PathVariable long id,@RequestBody MonHoc monHoc){
+		System.out.println("dang ky mon hoc");
+		sinhVienSevice.dangKyMonHoc(id, monHoc);
+		return new ResponseEntity<>("Dang ky mo hoc thanh cong", HttpStatus.OK);
+		
+	}
+	@PutMapping(value="sinhvien/xoadangky/{id}")
+	public ResponseEntity<String> xdangKyMonHoc(@PathVariable long id,@RequestBody MonHoc monHoc){
+		System.out.println("Xoa dang ky ky mon hoc");
+		sinhVienSevice.deleteMonHocDangKy(id, monHoc);
+		return new ResponseEntity<>("Xóa thành công mo hoc thanh cong", HttpStatus.OK);
+		
+	}
+	
 	
 }

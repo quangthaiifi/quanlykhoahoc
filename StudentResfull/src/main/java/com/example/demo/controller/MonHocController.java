@@ -39,14 +39,16 @@ public class MonHocController {
 	}
 	@PostMapping(value="monhoc/create")
 	public void createMonHoc(@RequestBody MonHoc monHoc) {
+		
 		monHocSevice.saveMonHoc(monHoc);
 	}
 	@PutMapping(value="monhoc/{id}")
 	public void updateMonHoc(@RequestBody MonHoc monHoc, @PathVariable long id) {
 		monHoc.setId(id);
 		monHocSevice.saveMonHoc(monHoc);
+		System.out.println("sửa thành công môn học " + monHoc);
 	}
-	@DeleteMapping(value="/monhoc/{id}")
+	@DeleteMapping(value="/monhoc/delete/{id}")
 	public ResponseEntity<String> deleteMonHoc(@PathVariable long id) {
 		System.out.println("Delete All Customers...");
 		monHocSevice.deleteMonHoc(id);
